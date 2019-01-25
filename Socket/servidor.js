@@ -1,10 +1,18 @@
 var express = require('express')
 var aplicacion = express()
-const net = require('net') 
-const server = require('http').Server(aplicacion)
+
+
+const net = require('net') //Se instalo
+const server = require('http').Server(aplicacion) // Es lo que instalamos, y va a funcionar como servidor
 const socket = require('socket.io')(server)
-var HOST = "https://redserver2019.herokuapp.com/" 
-var PORT = "3000"  
+
+//Este serán las direcciones
+var HOST = "https://redserver2019.herokuapp.com/"  //Este mi IP  de la red
+var PORT = " 3000"  // es el puerto
+
+// server.listen(PORT, function(){
+//      console.log('Servidor Activo'+ PORT + ':' + HOST)
+//  })
 
 var ser = net.createServer(function(so){
     so.on('data', function(data){
@@ -13,10 +21,9 @@ var ser = net.createServer(function(so){
 
     so.on('data', function(data){
 
-
-         console.log(so)
-         console.log(so.remoteAddress +" "+ so.remotePort)
-        // console.log(data.toString('utf8'))
+        // console.log(bufferOriginal.toString(data)); ESTE NO SIRVE
+       
+         console.log(data)
 
         
     })
