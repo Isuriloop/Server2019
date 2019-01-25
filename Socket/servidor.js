@@ -8,7 +8,7 @@ const socket = require('socket.io')(server)
 
 //Este serán las direcciones
 var HOST = "https://redserver2019.herokuapp.com/"  //Este mi IP  de la red
-var PORT = " 3000"  // es el puerto
+var PORT = " 3001"  // es el puerto
 
 // server.listen(PORT, function(){
 //      console.log('Servidor Activo'+ PORT + ':' + HOST)
