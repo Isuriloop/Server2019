@@ -1,18 +1,27 @@
 var express = require('express')
 var aplicacion = express()
-
-
-const net = require('net') //Se instalo
+var ipdinamic
+const net = require('net') 
+const os = require('os')
+var interface = os.networkInterfaces()
 const server = require('http').Server(aplicacion) // Es lo que instalamos, y va a funcionar como servidor
 const socket = require('socket.io')(server)
+for(var k in interface){
+    for(var k2 in interface[k]){
 
-//Este serán las direcciones
-var HOST = "https://redserver2019.herokuapp.com/"  //Este mi IP  de la red
-var PORT = " 3001"  // es el puerto
+        var address=interface[k][k2];
+        if(address.family=="IPv4", !address.internal){
+            ipdinamic =address.address.toString();
+            
+            console.log(ipdinamic)
+            
+        }
+    }
+}
 
-// server.listen(PORT, function(){
-//      console.log('Servidor Activo'+ PORT + ':' + HOST)
-//  })
+var HOST = ipdinamic
+var PORT = "3000"
+
 
 var ser = net.createServer(function(so){
     so.on('data', function(data){
